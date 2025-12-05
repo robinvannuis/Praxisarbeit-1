@@ -274,8 +274,7 @@ Der nächste von mir definierte Query funktioniert ähnlich wie der ersten, auß
 
 Alle weiteren Queries funktionieren sehr ähnlich zu den beiden bisher beschriebenen, analysieren jedoch unterschiedliche Werte. Ein letzter Query auf den ich eingehen möchte dient dazu die Anzahl der Funktionen zu bestimmen. Außerdem bestimmt der Query - in Abhängigkeit zu bestimmten Kriterien - die Anzahl der Funktionen, die Anzahl der skalaren Funktionen und den entsprechenden Anteil an skalaren Funktionen.
 
-Die Ergebnisse der Queries kann man sich in zwei möglichen Formen anzeigen lassen, in Tabellenform und in einem Balkendiagramm, wodurch man verschieden Blickrichtungen bekommt und die Daten unterschiedlich analysieren kann.
-
+Die Ergebnisse der Queries kann man sich in zwei möglichen Formen anzeigen lassen, in Tabellenform und in einem Balkendiagramm, wodurch man verschieden Blickrichtungen bekommt und die Daten unterschiedlich analysieren kann. 
 
 
 
