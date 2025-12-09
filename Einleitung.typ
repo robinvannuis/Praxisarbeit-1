@@ -1,4 +1,5 @@
 #let Star-Schema = link(<grd:star_schema>)[Star-Schema]
+#let CDS = link(<grd:cds>)[CDS]
 = Einleitung
 
 == Motivation
@@ -23,6 +24,8 @@ Das zentrale Ziel meines Projektes ist die Entwicklung eines Systems für ein an
 
 Um dieses Hauptziel zu erreichen, implementiere ich eine automatisierte Datenspeicherung mit Versionskontrolle, die in regelmäßigen Intervallen festgelegte Daten aus Quelltabellen ausliest und in dedizierte Archivtabellen überführt, wobei jede Auslesung eine neue, eindeutig identifizierbare Version erstellt. Diese Tabellen verbinde ich zu einem sogenannten #Star-Schema, mit welchem die Daten nun deutlich übersichtlicher und besser zu analysieren sind.
 
-Darauf aufbauend entwickle ich ein Query-Framework, mit dem man die gespeicherten historischen Daten über vordefinierte Abfragen auslesen kann. Dadurch sollen die Daten, sowohl historisch, als auch über verschiedene Versionen hinweg analysiert und verarbeitet werden können.
+Die Abteilung, in welcher ich dieses Projekt durchführe, ist für die Erstellung und Entwicklung von Objekten und Features in den ABAP #CDS zuständig. Daher konzentriere ich mich in meinem Projekt auf die Metadaten dieser Objekte und Features, wie zum Beispiel, die Anzahl der Views, die ein Objekt besitzt, oder die Anzahl der implementierten Features in einem bestimmten Zeitraum.
+
+Auf diesen Metadaten aufbauend entwickle ich ein Query-Framework, mit dem man die gespeicherten historischen Daten über vordefinierte Abfragen auslesen kann. Dadurch sollen die Daten, sowohl historisch, als auch über verschiedene Versionen hinweg analysiert und verarbeitet werden können.
 
 Diese Analysen sollen dabei helfen datenbasiert zu entschieden, welche Features und Objekte weiter entwickelt werden sollen und welche eher weniger Aufmerksamkeit benötigen und nur noch bedingt gewartet werden müssen.

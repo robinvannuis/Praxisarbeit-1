@@ -52,7 +52,7 @@ Annotationen an sich sind Anmerkungen oder Vermerke und beim Programmieren werde
 
 Es gibt zwei verschieden Typen von Annotationen, man differenziert zwischen ViewAnnotationen und Element-Annotationen. View-Annotationen sind Vermerke auf ein gesamtes View, wohingegen sich Element-Annotationen nur auf ein einzelnes Element beziehen.
 
-Der Aufbau wie Annotationen im Code angegeben sind folgt einer bestimmten Syntax und wird immer durch ein '@' am Anfang als Annotation gekennzeichnet. Danach kommt der jeweilige Namespace (z.B. UI) und der Name der Annotation (z.B. selectionField). Die einzelnen Elemente werden immer durch einen Punkt getrennt und die Werte sind nach einem Doppelpunkt anzugeben. Zeichenketten werden in einfache Anführungszeichen gesetzt, während sogenannte Enumerationen mit einem Hash-Zeichen gekennzeichnet sind, zum Beispiel #"#STANDARD". #cite(<cds_annotations>)
+Der Aufbau wie Annotationen im Code angegeben sind folgt einer bestimmten Syntax und wird immer durch ein '@' am Anfang als Annotation gekennzeichnet. Danach kommt der jeweilige Namespace (z.B. UI) und der Name der Annotation (z.B. selectionField). Die einzelnen Elemente werden immer durch einen Punkt getrennt und die Werte sind nach einem Doppelpunkt anzugeben. Zeichenketten werden in einfache Anführungszeichen gesetzt, während sogenannte #Enumeration#"en" mit einem Hash-Zeichen gekennzeichnet sind, zum Beispiel #"#STANDARD". #cite(<cds_annotations>)
 
 Die Struktur eine Annotation lässt sich konkret wie folgt darstellen:
 #codefigure(caption: "Annotationsstruktur")[```cds
@@ -64,7 +64,9 @@ Ein Beispiel für eine Annotation könnte so aussehen:
 ```]
 
 ==== Enumeration <grd:enumeration>
-Enumerationen definieren einen festgelegten Satz von Werten. Man definiert einen CDS Typ mit einer Liste von vorher festgelegten Konstanten und Felder dieses Typs dürfen nur Werte aus besagter Liste annehmen. Das erhöht die Qualität der Daten und erleichtert Validierungen, da nur gültige, klar benannte Werte gespeichert werden können. Sie werden typischerweise in Statusfeldern, Kategorien oder Klassifikationen benutzt und folgen der Syntax: #"#BEISPIELENUMERATION"
+Enumerationen in CDS definieren einen eigenen, stark typisierten Datentyp mit einem festgelegten Satz zulässiger Werte. Eine Enumeration besteht aus einer Liste benannter Konstanten, die jeweils einem technischen Wert zugeordnet sind. Felder, die diesen Enumerations-Typ verwenden, dürfen ausschließlich diese definierten Werte annehmen.
+
+Dies erhöht die Qualität der Daten und erleichtert Validierungen, da nur gültige, klar benannte Werte gespeichert werden können. Sie werden typischerweise in Statusfeldern, Kategorien oder Klassifikationen benutzt und werden mit der folgenden Syntax referenziert: #"#BEISPIELENUMERATION"
 
 == Metadatentabelle <grd:metadatentabelle>
 
@@ -72,12 +74,12 @@ Eine Metadatentabelle ist eine Datenstruktur, die Metadaten - also sozusagen "Da
 
 == Star-Schema <grd:star_schema>
 
-Ein Star-Schema oder auch Sternschemata ist ein mehrdimensionales Datenmodell, in dem Daten in einer Datenbank so verknüpft und organisiert werden können, dass sie besser zu verstehen und analysieren sind. Man kann Sternschemata auf viele verschiedene Datenmodelle, wie "Data Warehouses", Datenbanken oder "Data Marts" anwenden. Sie eignen sich außerdem sehr gut zur Verarbeitung von großen Datenmengen, da sie speziell auf diese optimiert sind.
+Ein Star-Schema ist ein mehrdimensionales Datenmodell, in dem Daten in einer Datenbank so verknüpft und organisiert werden können, dass sie besser zu verstehen und analysieren sind. Man kann Star-Schemas auf viele verschiedene Datenmodelle, wie "Data Warehouses", Datenbanken oder "Data Marts" anwenden. Sie eignen sich außerdem sehr gut zur Verarbeitung von großen Datenmengen, da sie speziell auf diese optimiert sind.
 
-In der Mitte eines Star-Schemas findet man eine einzelne "Faktentabelle", die verschiedene Daten aus den anderen Tabellen enthält. Sie ist mit den anderen Tabellen, durch verschiedenste Fremdschlüssel, wie zum Beispiel Zeitpunkte oder andere "Dimensionen", verknüpft. Dadurch kann es dazu kommen, dass Daten denormalisiert werden, das heißt einige Tabellen werden mit redundanten Spalten erweitert. Auch wenn dies ein wenig kontraproduktiv wirkt, hilft es dabei die Abfragen und Bearbeitungszeit zu verkürzen. Außerdem sind Star-Schema nicht so sehr auf Joins zwischen den einzelnen Tabellen angewiesen und eignen sich somit besser für einfache Datenabfragen. Die Struktur von Sternschemata ist des weiteren sehr leicht zu verstehen und ermöglichen dem Enduser ein einfaches Auffinden benötigter Daten.
+In der Mitte eines Star-Schemas findet man eine einzelne "Faktentabelle", die verschiedene Daten aus den anderen Tabellen enthält. Sie ist mit den anderen Tabellen, durch verschiedenste Fremdschlüssel, wie zum Beispiel Zeitpunkte oder andere "Dimensionen", verknüpft. Dadurch kann es dazu kommen, dass Daten denormalisiert werden, das heißt einige Tabellen werden mit redundanten Spalten erweitert. Auch wenn dies ein wenig kontraproduktiv wirkt, hilft es dabei die Abfragen und Bearbeitungszeit zu verkürzen. Außerdem sisnd Star-Schema nicht so sehr auf Joins zwischen den einzelnen Tabellen angewiesen und eignen sich somit besser für einfache Datenabfragen. Die Struktur von Star-Schemata ist des weiteren sehr leicht zu verstehen und ermöglichen dem Enduser ein einfaches Auffinden benötigter Daten.
 
 == Queries <grd:queries>
-In der Datenanalyse werden sogenannte Queries (Singular: Query) genutzt, um Daten anhand bestimmter Kriterien auszulesen. Sie erstellen Listenausgaben von Datenbanken gruppiert auf Daten wie zum Beispiel Zeit- oder Preisspannen. Darüber hinaus kann man Queries gut benutzen, um Trends, Muster oder Änderungen in den Daten zu erkennen. Innerhalb von SAP können Queries auch ohne besondere Programmierkenntnisse erstellt werden und lassen sich für viele verschiedene Arten von Berichten wie Grundlisten, Statistiken oder Ranglisten nutzen. Man kann sie außerdem in andere Systeme exportieren oder aus diesen importieren. Queries sind ein Teil der #CDS und werden als "transient-view-entity" definiert.
+In der Datenanalyse werden sogenannte Queries (Singular: Query) genutzt, um Daten anhand bestimmter Kriterien auszulesen. Sie erstellen Listenausgaben von Datenbanken gruppiert auf Daten wie zum Beispiel Zeit- oder Preisspannen. Darüber hinaus kann man Queries gut benutzen, um Trends, Muster oder Änderungen in den Daten zu erkennen. Innerhalb von SAP können Queries auch ohne besondere Programmierkenntnisse erstellt werden und lassen sich für viele verschiedene Arten von Berichten wie Grundlisten, Statistiken oder Ranglisten nutzen. Man kann sie außerdem in andere Systeme exportieren oder aus diesen importieren. Queries sind ein Teil der #CDS und werden als "transient-view-entity" definiert. #cite(<cds_queries>)
 
 Die Definition eines Queries kann zum Beispiel so aussehen:
 
@@ -107,7 +109,7 @@ Ein OLAP Würfel auch Feature-Cube genannt, ist ein logisches Datenmodell zur Da
 Es gibt noch viele weitere Operationen die häufig in Cubes benutzt werden, die für mein Projekt jedoch nicht relevant sind.
 
 == Assoziation <grd:assoziation>
-Eine Assoziation (zu Englisch: association) ist eine Möglichkeit in #ABAP SQL Tabellen anhand von gemeinsamen Feldern zu verknüpfen. Sie ähnelt im Kern einer "Join"-Verknüpfung und kann verschiedene #Kardinalitäten haben. Man definiert eine Assoziation, indem man eine Zieltabelle, eine Kardinalität und Felder angibt, anhand von denen die Tabellen verknüpft werden sollen. Dadurch wird den einzelnen Zeilen in Tabelle A eine bestimmte Anzahl aus Wert von Tabelle B zugeordnet. Im Normalfall entspricht eine Assoziation einem "left-outer-join", das heißt es werden alle Zeilen aus Tabelle A und die Zeilen aus Tabelle B, die den Fremdschlüssel aus A implementieren, zurückgegeben. Falls eine Zeile aus Tabelle B keinen übereinstimmenden Wert für einen Datensatz aus Tabelle A hat, werden die Spalten aus Tabelle B auf "null" gesetzt. Angegeben wird eine Assoziation nach folgendem Schema:
+Eine Assoziation (zu Englisch: association) ist eine Möglichkeit in ABAP #CDS Tabellen anhand von gemeinsamen Feldern zu verknüpfen. Sie ähnelt im Kern einer "Join"-Verknüpfung und kann verschiedene #Kardinalitäten haben. Man definiert eine Assoziation, indem man eine Zieltabelle, eine Kardinalität und Felder angibt, anhand von denen die Tabellen verknüpft werden sollen. Dadurch wird den einzelnen Zeilen in Tabelle A eine bestimmte Anzahl aus Wert von Tabelle B zugeordnet. Im Normalfall entspricht eine Assoziation einem "left-outer-join", das heißt es werden alle Zeilen aus Tabelle A und die Zeilen aus Tabelle B, die den Fremdschlüssel aus A implementieren, zurückgegeben. Falls eine Zeile aus Tabelle B keinen übereinstimmenden Wert für einen Datensatz aus Tabelle A hat, werden die Spalten aus Tabelle B auf "null" gesetzt. Angegeben wird eine Assoziation nach folgendem Schema:
 
 #codefigure(caption: "Beispiel Assoziation")[```cds
 association [Kardinalität] to Zieltabelle as Alias
@@ -117,7 +119,7 @@ association [Kardinalität] to Zieltabelle as Alias
 
 
 == Kardinalitäten <grd:kardinalitaeten>
-Eine Kardinalität gibt an wie Fremdschlüssel die Zeilen zwischen Tabellen verknüpfen und kann die Formen eins-zu-eins (1 : 1), eins-zu-viele(1 : n) oder viele-zu-viele(n : m) haben. Durch Kardinalitäten können effizienter Abfragen auf Datenbanken erstellt werden.
+Eine Kardinalität gibt an wie Fremdschlüssel die Zeilen zwischen Tabellen verknüpfen und kann die Formen eins-zu-eins (1 : 1), eins-zu-viele (1 : n) oder viele-zu-viele (n : m) haben. Durch Kardinalitäten können effizienter Abfragen auf Datenbanken erstellt werden.
 
 Eins-zu-eins (1 : 1): Eine Zeile in Tabelle A kann mit maximal eine Zeile aus Tabelle B verknüpft werden und anders herum.
 
@@ -125,4 +127,8 @@ Eins-zu-viele (1 : n): Eine Zeile in Tabelle A kann mit beliebig vielen Zeilen a
 
 Viele-zu-viele (n : m): Eine Zeile in Tabelle A kann mit beliebig vielen Zeilen aus Tabelle B verknüpft werden und anders herum.
 
-In CDS-Views wird nur die "Zielkardinalität" angegeben und gibt einen minimalen und einen maximalen Wert an, die diese annehemen kann. Eine eins-zu-eins Kardinalität kann in CDS mehrere Formen annehmen und sieht entweder so [1..1] oder so [1] aus. [1..1] steht in dem Falle dafür, dass jeder Zeile von Tabelle A mindestens eine, aber auch maximal eine Zeile von Tabelle B zugewiesen werden kann. Eine eins-zu-viele Beziehung würde in CDS entweder so [1..#"*"] oder so [#"*"] aussehen. Eine Kardinalität anzugeben ist optional und kann ausgelassen werden. Der Standardwert in so einem Fall ist (1 : n).
+In CDS-Views gibt es zwei verschiedene Syntax um Kardinalitäten anzugeben. 
+
+Bei der ersten wird nur die "Zielkardinalität" angegeben und gibt einen minimalen und einen maximalen Wert an, die diese annehemen kann. Eine eins-zu-eins Kardinalität kann dort mehrere Formen annehmen und sieht entweder so [1..1] oder so [1] aus. [1..1] steht in dem Falle dafür, dass jeder Zeile von Tabelle A mindestens eine, aber auch maximal eine Zeile von Tabelle B zugewiesen werden kann. Eine eins-zu-viele Beziehung würde in CDS entweder so [1..#"*"] oder so [#"*"] aussehen. Eine Kardinalität anzugeben ist optional und kann ausgelassen werden. Der Standardwert in so einem Fall ist (1 : n).
+
+Bei der zweiten (neueren) Syntax werden sowohl die Quell- als auch die Zielkardinalität angegeben. Diese Syntax sieht dann zum Beispiel so aus: "OF EXACT ONE TO EXACT ONE" für eine eins-zu-eins Beziehung, "OF EXACT ONE TO MANY" für eine eins-zu-viele Beziehung und "OF MANY TO MANY" für eine viele-zu-viele Beziehung.
