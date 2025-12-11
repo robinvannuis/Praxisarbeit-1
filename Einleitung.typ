@@ -10,7 +10,7 @@ Eine zentrale Möglichkeit, diese Datenlücke zu schließen, besteht darin, die 
 
 Daraus ergibt sich die zentrale Fragestellung:
 
-Wie können wir Metadaten so aufbereiten, dass historische Analysen zur Feature-Nutzung aussagekräftige Erkenntnisse für datenbasierte Entscheidungen im Hinblick auf Entwicklungen liefern?
+Wie können wir Metadaten so aufbereiten, dass historische Analysen zur Feature-Nutzung, aussagekräftige Erkenntnisse für datenbasierte Entscheidungen im Hinblick auf Entwicklungen liefern?
 
 Dieser Prozess nennt sich analytisches Feature Reporting und orientiert sich methodisch an den vier Hauptpunkten der SAP-Discovery-Strategie:
 1. Wer ist der Enduser und welche Aufgaben/Verantwortungen hat er?
@@ -20,7 +20,7 @@ Dieser Prozess nennt sich analytisches Feature Reporting und orientiert sich met
 
 == Zielsetzung
 
-Das zentrale Ziel meines Projektes ist die Entwicklung eines Systems für ein analytisches Feature Reporting, das durch Metadaten-basierte Versionskontrolle die historische Entwicklung der Feature-Nutzung transparent macht und somit datenbasierte Entscheidungen ermöglicht.
+Das zentrale Ziel meines Projektes ist die Entwicklung eines Systems für ein analytisches Feature Reporting, welches durch Metadaten-basierte Versionskontrolle die historische Entwicklung der Feature-Nutzung transparent macht und somit datenbasierte Entscheidungen ermöglicht.
 
 Um dieses Hauptziel zu erreichen, implementiere ich eine automatisierte Datenspeicherung mit Versionskontrolle, die in regelmäßigen Intervallen festgelegte Daten aus Quelltabellen ausliest und in dedizierte Archivtabellen überführt, wobei jede Auslesung eine neue, eindeutig identifizierbare Version erstellt. Diese Tabellen verbinde ich zu einem sogenannten #Star-Schema, mit welchem die Daten nun deutlich übersichtlicher und besser zu analysieren sind.
 

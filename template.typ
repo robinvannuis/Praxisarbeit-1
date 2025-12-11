@@ -151,7 +151,7 @@
   set par(justify: true)
 
   // font setup (LaTeX Look: 'New Computer Modern')
-  set text(font: "New Computer Modern", size: 12pt)
+  set text(font: "Arial", size: 12pt)
 
   // heading setup
   set heading(numbering: heading_numbering)
@@ -456,19 +456,20 @@
   })
 
   // display main document and reset page counter
-  set page(
-    numbering: page_numbering,
-    footer: align(center)[
-      #context counter(page).display() / #context {
-        let end = query(<__thesis_end>).first()
-        counter(page).at(end.location()).first()
-      }
-    ],
-    margin: (top: 4cm, x: 2.5cm, bottom: 2.5cm),
-  )
+ set page(
+   numbering: page_numbering,
+   footer: align(center)[
+     #context counter(page).display() / #context {
+       let end = query(<__thesis_end>).first()
+       counter(page).at(end.location()).first()
+     }
+   ],
+   margin: (left: 2.5cm, right: 2.5cm, top: 2.5cm, bottom: 2.5cm),
+ )
+
   counter(page).update(1)
 
-  set par(leading: 0.9em)
+  set par(leading: 1.5em)
 
 
   body

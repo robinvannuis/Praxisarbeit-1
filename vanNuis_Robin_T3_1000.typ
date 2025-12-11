@@ -110,11 +110,11 @@
 
 = Bisheriger Stand
 
-Grundlage des Projektes ist sind die verschiedenen - bereits existierenden - Tabellen im internen System XT7. Aus diesen #Metadatentabelle#"n" stammen die Daten, die es gilt zu verarbeiten und zu analysieren. Des weiteren existieren bereits zwei #CDS-View#"s", die die Daten analysieren. Diese beziehen sich jedoch nur auf Laufzeitanalysen und nicht auf die - für mein Projekt benötigten - Veränderungen jener Daten und sind somit nicht relevant für meine Arbeit.
+Grundlage des Projektes ist sind die verschiedenen - bereits existierenden - Tabellen im internen System. Aus diesen #Metadatentabelle#"n" stammen die Daten, die es gilt zu verarbeiten und zu analysieren. Des weiteren existieren bereits zwei #CDS-View#"s", die die Daten analysieren. Diese beziehen sich jedoch nur auf Laufzeitanalysen und nicht auf die - für mein Projekt benötigten - Veränderungen jener Daten und sind somit nicht relevant für meine Arbeit.
 
-Die Tabellen auf die ich im Folgenden zugreifen werde speichern Informationen über verschiedene Objekte/ Teilobjekte und die Beziehungen zwischen den Objekten. Es gibt verschiedene Arten von Tabellen, wovon die meisten unterschiedlich aufgebaut sind und verschiedenste Aufgaben haben. Daher muss ich für jede Tabelle verschiedene eigene Tabellen zum Speichern der Daten erstellen. Auch die Selektion der Daten muss für jede Tabelle leicht angepasst werden.
+Die Tabellen auf die ich im Folgenden zugreifen werde speichern Informationen über verschiedene Objekte / Teilobjekte und die Beziehungen zwischen den Objekten. Es gibt verschiedene Arten von Tabellen, wovon die meisten unterschiedlich aufgebaut sind und verschiedenste Aufgaben haben. Daher muss ich für jede Tabelle verschiedene eigene Tabellen zum Speichern der Daten erstellen. Auch die Selektion der Daten muss für jede Tabelle leicht angepasst werden.
 
-Das Problem bei den Daten liegt darin, dass alle bereits existierenden Tabellen nur Momentanaufnahmen speichern. Das heißt, ich kann immer nur auf die aktuellsten Daten zugreifen und nicht auf jene aus vorherigen "Versionen". Da ein Ziel des Projektes ist, Trends in den Daten zu erkennen und zu analysieren, reichen die bisherigen Tabellen nicht aus.
+Das Problem bei den Daten liegt darin, dass alle bereits existierenden Tabellen nur Momentanaufnahmen speichern. Das heißt, ich kann immer nur auf die aktuellsten Daten zugreifen und nicht auf jene aus vorherigen "Versionen". Da es ein Ziel des Projektes ist, Trends in den Daten zu erkennen und zu analysieren, reichen die bisherigen Tabellen nicht aus.
 
 Aus diesem Grund baue ich mir eigene Tabellen um die Daten historisch zu speichern. Jedoch können meine Tabellen auch kein genaues Abbild der bisherigen Tabellen sein, da die Datenmenge sonst deutlich zu groß werden. Als Beispiel: Eine Tabelle, die ursprünglicherweise 100 @MB groß war, erstellt nach einem monatlichen Abruf und Speichern der Daten über 10 Jahre, eine Tabelle die nun 240.000 @MB groß ist, oder auch 240 @GB.
 
@@ -276,9 +276,32 @@ Alle weiteren Queries funktionieren sehr ähnlich zu den beiden bisher beschrieb
 
 Die Ergebnisse der Queries kann man sich in zwei möglichen Formen anzeigen lassen, in Tabellenform und in einem Balkendiagramm, wodurch man verschieden Blickrichtungen bekommt und die Daten unterschiedlich analysieren kann. 
 
-
-
 == Auswertungen
+
+Für die Auswertung der Daten habe ich mir verschiedene Versionen der Daten erstellt und gespeichert. Aufgrund von Problemen mit der Verarbeitung der Queries, musste ich die Anzahl der Datensätze limitieren, weshalb ich nur Daten von ca. 10000 Objekten speichern konnte. Dies hat natürlich Auswirkungen auf die Qualität der Auswertung, da sich die Datenmenge bei jedem Datenabruf verändert und unterschiedliche Ausschnitte aus dem gesamten Datensatz gespeichert werden. Außerdem gab es einige Probleme mit dem internen System XT7, weshalb ich all meine erstellten Objekte (Tabellen, Views, Queries) in ein anderes System übertragen musste. Dadurch sind alle bis zu dem Zeitpunkt der Übertragung erstellten Daten verloren gegangen und die nun von mir erstellten Versionen wurden nicht im - wie ursprünglicherweise geplant - wöchentlichen Abstand erstellt, sondern in einem Abstand von wenigen Stunden. Dies hat natürlich auch Auswirkungen auf die Qualität der Auswertung, da sich in so einem kurzen Zeitraum kaum Veränderungen in den Daten ergeben. 
+
+#linebreak()
+
+Dennoch lassen sich aus den erstellten Versionen einige Trends erkennen. Es lässt sich zum Beispiel erkennen, dass die Anzahl der Assoziationen mit jeder neuen Version leicht ansteigt. Dies lässt sich dadurch erklären, dass mit der Zeit immer mehr Objekte erstellt werden, die wiederum Assoziationen benötigen um in Cube-Views - also #OLAP-Würfel#"n" - eingebunden zu werden.
+
+Zwischen den Versionen 1 und 2 lagen ca. 2 Stunden Zeit, weshalb in dieser zeit nur sehr wenige Objekte und Assoziationen hinzugekommen sind. Die Veränderungen hängen auch sehr stark von den Arbeitszeiten der Entwickler ab, weshalb es in manchen Versionen kaum Veränderungen gibt, während es in anderen Versionen wieder mehr sind. So gab es beispielsweise zwischen Version 1 und 2 in fast allen Source Typen einen kleinen Anstieg an genutzten Assoziationen, während zwischen den Versionen 2 und 3 in manchen Source Typen sogar ein leichter Rückgang zu verzeichnen war. Siehe folgende Grafik:
+
+#figure(
+  image("/assets/Assoziation Query 11.12.png", width: 60%),
+  caption: [Ergebnisse der Assoziations-Query],
+)
+
+Die Veränderungen an der Anzahl der Assoziations hängt auch stark von der Software-Komponente ab. In manchen Komponenten gibt es einen deutlichen Anstieg an genutzten Assoziationen, während in anderen Komponenten kaum Veränderungen zu verzeichnen sind. Dies lässt dadurch erklären, dass manche Komponenten stärker bearbeitet und weiter entwickelt werden als andere.
+
+Auch bei der Anzahl der Funktionnen gibt es einige Veränderungen. Die unterscheiden sich jedoch stark von den Veränderungen bei den Assoziationen. Während es bei den Assoziationen meist eher kleinere Veränderungen in den Daten gab, gibt es bei den Funktionen teils deutliche Sprünge. So steigt die Anzahl der Funktionen aus dem Source Type "W" zum Beispiel von 1.612 Elementen in der ersten Version auf 2.172 Elementen in der zweiten Version und 4.140 Elementen in der dritten Version an. Spannend zu sehen ist jedoch das sich die durchschnittliche Anzahl an Funktionen pro Enität nur marginal von 3,558 auf 4,052 und 4,059 ändert. Dies lässt darauf schließen, dass in der Zeit zwischen den Versionen vor allem neue Enitäten erstellt wurden, die jedoch im Durchschnitt eine ähnliche Anzahl an Funktionen besitzen wie die bereits existierenden Enitäten. 
+
+
+// #figure(
+//   image("/assets/Scalar Function Query Results.png", width: 100%),
+//   caption: [Ergebnisse der Scalar-Function-Query, ungefiltert],
+// )
+
+
 
 = Fazit
 
