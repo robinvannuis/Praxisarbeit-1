@@ -293,15 +293,19 @@ Zwischen den Versionen 1 und 2 lagen ca. 2 Stunden Zeit, weshalb in dieser zeit 
 
 Die Veränderungen an der Anzahl der Assoziations hängt auch stark von der Software-Komponente ab. In manchen Komponenten gibt es einen deutlichen Anstieg an genutzten Assoziationen, während in anderen Komponenten kaum Veränderungen zu verzeichnen sind. Dies lässt dadurch erklären, dass manche Komponenten stärker bearbeitet und weiter entwickelt werden als andere.
 
-Auch bei der Anzahl der Funktionnen gibt es einige Veränderungen. Die unterscheiden sich jedoch stark von den Veränderungen bei den Assoziationen. Während es bei den Assoziationen meist eher kleinere Veränderungen in den Daten gab, gibt es bei den Funktionen teils deutliche Sprünge. So steigt die Anzahl der Funktionen aus dem Source Type "W" zum Beispiel von 1.612 Elementen in der ersten Version auf 2.172 Elementen in der zweiten Version und 4.140 Elementen in der dritten Version an. Spannend zu sehen ist jedoch das sich die durchschnittliche Anzahl an Funktionen pro Enität nur marginal von 3,558 auf 4,052 und 4,059 ändert. Dies lässt darauf schließen, dass in der Zeit zwischen den Versionen vor allem neue Enitäten erstellt wurden, die jedoch im Durchschnitt eine ähnliche Anzahl an Funktionen besitzen wie die bereits existierenden Enitäten. 
+Auch bei der Anzahl der Funktionnen gibt es einige Veränderungen. Die unterscheiden sich jedoch stark von den Veränderungen bei den Assoziationen. Während es bei den Assoziationen meist eher kleinere Veränderungen in den Daten gab, gibt es bei den Funktionen teils deutliche Sprünge. So steigt die Anzahl der Funktionen aus dem Source Type "W" zum Beispiel von 1.612 Elementen in der ersten Version auf 2.172 Elementen in der zweiten Version und 4.140 Elementen in der dritten Version an.
 
+Spannend zu sehen ist jedoch das sich die für diesen Source Type die durchschnittliche Anzahl an Funktionen pro Enität nur marginal von 3,558 auf 4,052 und 4,059 ändert. Dies lässt darauf schließen, dass in der Zeit zwischen den Versionen vor allem neue Enitäten erstellt wurden, die jedoch im Durchschnitt eine ähnliche Anzahl an Funktionen besitzen wie die bereits existierenden Enitäten.
 
-// #figure(
-//   image("/assets/Scalar Function Query Results.png", width: 100%),
-//   caption: [Ergebnisse der Scalar-Function-Query, ungefiltert],
-// )
+Bei dem Source Type "P" ist die Veränderung der Anzahl an Funktionen sowol in der absoluten Anzahl als auch im Durchschnitt pro Enität deutlicher.
 
+Siehe Abbildung:
+#figure(
+  image("/assets/Average Function Query.png", width: 100%),
+  caption: [Ergebnisse des Average-Function-Query],
+)
 
+In der Analyse der Anzahl der Funktionen und der skalaren Funktionen lassen sich in den ersten drei Versionen nur sehr wenige Veränderungen erkennen. Dies liegt daran, dass in dem kurzen Zeitraum nur wenig neue Funktionen erstellt wurden. Lediglich im Source Type "W" unter der Software-Komponente "SAP_Basis" gibt es einen deutlichen Anstieg an Funktionen zwischen der zweiten und der dritten Version. Dies lässt sich vor allem auf die Art des Datenabrufes zurückführen, da ich die Anzahl der Datensätze aus Speicher- und Verarbeitungsgründen auf 10.000 Objekte limitieren musste. Hätte ich die Daten über einen längeren Zeitraum und mit einer größeren Datenmenge abrufen können, wären die Ergebnisse vermutlich aussagekräftiger gewesen.
 
 = Fazit
 
