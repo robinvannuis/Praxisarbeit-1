@@ -30,15 +30,15 @@ Ein wichtiger Vorteil von @ABAP ist die plattformunabhängige Ausführung innerh
 
 Die @SQL ist die weltweit am besten etablierte und populärste Sprache für Datenabfragen und ist aus der modernen Datenverarbeitung nicht mehr wegzudenken. Die Sprache bietet umfassende Funktionen zum Erstellen, Manipulieren und Verknüpfen von Datenbanken und ermöglicht sowohl einfache Abfragen, als auch komplexe Datenoperationen. Anders als vollständige Programmiersprachen wird @SQL typischerweise als eingebettete Abfragesprache in andere Sprachen wie Python, Java oder C#"#" integriert. Dies ermöglicht Entwicklern, die Stärken beider Welten zu kombinieren: Die logische Programmstruktur der Ausgangssprache und die spezialisierte Datenbankmanipulation durch @SQL. Die meisten Datenbanksysteme, von MySQL bis hin zu PostgreSQL, orientieren sich an einheitlichen SQL-Standards. Diese Standardisierung erhöht nicht nur die Kompatibilität zwischen verschiedenen Systemen, sondern erleichtert auch den Wissenstransfer für Entwickler. #cite(<sql>)
 
-== CDS <grd:cds>
+== Core-Data-Service <grd:cds>
 
-@CDS:pl stellen die zentrale Infrastruktur zur semantischen Datenmodellierung im SAP-System dar. Sie ermöglichen es, Datenmodelle direkt auf der Datenbankebene zu definieren und dadurch Daten effizient, sicher und performant bereitzustellen. Ein zentrales Element der @CDS sind die sogenannten #CDS-Views, mit denen sich Daten aus unterschiedlichen Tabellen logisch zusammenfassen, anreichern und für verschiedene Anwendungsszenarien nutzbar machen lassen.
+@CDS:pl stellen die zentrale Infrastruktur zur semantischen Datenmodellierung im SAP-System dar. Sie ermöglichen es, Datenmodelle direkt auf der Datenbankebene zu definieren und dadurch Daten effizient, sicher und performant bereitzustellen. Ein zentrales Element der @CDS's sind die sogenannten #CDS-Views, mit denen sich Daten aus unterschiedlichen Tabellen logisch zusammenfassen, anreichern und für verschiedene Anwendungsszenarien nutzbar machen lassen.
 
 Im Folgenden werde ich näher auf verschiedene @CDS:pl eingehen und wie diese für mein Projekt relevant sind.
 
 === CDS Views <grd:cds_views>
 
-CDS Views (Core Data Services Views) sind ein zentraler Bestandteil der #CDS und dienen zur semantischen und logischen Modellierung von Daten im SAP-System. Es handelt sich um virtuelle Datenmodelle, das heißt, die Daten werden nicht physisch gespeichert, sondern nur aus den zugrundeliegenden Datenbanktabellen gelesen.
+CDS Views (Core Data Services Views) sind ein zentraler Bestandteil der #CDS's und dienen zur semantischen und logischen Modellierung von Daten im SAP-System. Es handelt sich um virtuelle Datenmodelle, das heißt, die Daten werden nicht physisch gespeichert, sondern nur aus den zugrundeliegenden Datenbanktabellen gelesen.
 
 CDS Views können sowohl im SAP HANA Produkt, als auch im #ABAP#"-System" definiert werden. Ein großer Vorteil ist, dass sie Tabellenbeziehungen und Verknüpfungen direkt in der Definition abbilden, sodass keine manuelle Verknüpfung der Tabellen in Programmen mehr nötig ist.
 
@@ -48,9 +48,9 @@ Darüber hinaus bieten CDS Views die Möglichkeit, Annotationen zu nutzen, um zu
 
 === CDS Annotationen <grd:cds_annotations>
 
-Annotationen an sich sind Anmerkungen oder Vermerke und beim Programmieren werden sie unter anderem als Strukturierungsmittel verwendet. In den @CDS werden Annotationen benutzt um #CDS-Views mit Metadaten anzureichern. Außerdem dienen sie zur semantischen Beschreibung von Entitäten, als Ersatz für Eigenschaften aus der alten SAP GUI und geben Informationen über aufsetzende Entwicklungsframeworks.
+Annotationen an sich sind Anmerkungen oder Vermerke und werden beim Programmieren unter anderem als Strukturierungsmittel verwendet. In den @CDS's werden Annotationen benutzt um #CDS-Views mit Metadaten anzureichern. Außerdem dienen sie zur semantischen Beschreibung von Entitäten, als Ersatz für Eigenschaften aus der alten SAP GUI und geben Informationen über aufsetzende Entwicklungsframeworks.
 
-Es gibt zwei verschieden Typen von Annotationen, man differenziert zwischen ViewAnnotationen und Element-Annotationen. View-Annotationen sind Vermerke auf ein gesamtes View, wohingegen sich Element-Annotationen nur auf ein einzelnes Element beziehen.
+Es gibt zwei verschieden Typen von Annotationen; man differenziert zwischen View-Annotationen und Element-Annotationen. View-Annotationen sind Vermerke auf ein gesamtes View, wohingegen sich Element-Annotationen nur auf einzelne Element beziehen.
 
 Der Aufbau wie Annotationen im Code angegeben sind folgt einer bestimmten Syntax und wird immer durch ein '@' am Anfang als Annotation gekennzeichnet. Danach kommt der jeweilige Namespace (z.B. UI) und der Name der Annotation (z.B. selectionField). Die einzelnen Elemente werden immer durch einen Punkt getrennt und die Werte sind nach einem Doppelpunkt anzugeben. Zeichenketten werden in einfache Anführungszeichen gesetzt, während sogenannte #Enumeration#"en" mit einem Hash-Zeichen gekennzeichnet sind, zum Beispiel #"#STANDARD". #cite(<cds_annotations>)
 
