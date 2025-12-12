@@ -357,7 +357,7 @@
     let (abstract_lang, abstract_lang_long, abstract_body) = a
     align(center + horizon)[
       #heading(outlined: false, numbering: none, [#text(
-          0.85em,
+          0.8em,
           smallcaps[Abstract],
         )\ #text(
           0.75em,

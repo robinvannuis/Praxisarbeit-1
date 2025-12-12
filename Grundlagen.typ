@@ -16,7 +16,7 @@
 
 = Grundlagen
 == ABAP <grd:abap>
-Das @ABAP ist eine von SAP SE entwickelte Objektorientierte Programmiersprache, die speziell für betriebswirtschaftliche Anwendungen konzipiert wurde. Ursprünglich stand das Akronym für "Allgemeiner Berichts und Aufbereitungs-Prozessor", wurde jedoch erst 1996 zu "Advanced Business (and) Application Programming" umbenannt, um den erweiterten Funktionsumfang der Sprache zu reflektieren. #cite(<abap_history>)
+Das @ABAP ist eine von SAP SE entwickelte objektorientierte Programmiersprache, die speziell für betriebswirtschaftliche Anwendungen konzipiert wurde. Ursprünglich stand das Akronym für "Allgemeiner Berichts und Aufbereitungs-Prozessor", wurde jedoch erst 1996 zu "Advanced Business (and) Application Programming" umbenannt, um den erweiterten Funktionsumfang der Sprache zu reflektieren. #cite(<abap_history>)
 
 Die Sprache wurde in den 1980er Jahren entwickelt und ist direkt mit dem SAP-System verbunden. @ABAP ermöglicht es Entwicklern, komplexe betriebswirtschaftliche Anwendungen zu erstellen, die nahtlos in die SAP-Umgebung integriert sind. Als objektorientierte Programmiersprache bietet @ABAP moderne Programmierkonzepte wie Klassen, Vererbung und Polymorphismus. #cite(<abap_keyword_doc>)
 

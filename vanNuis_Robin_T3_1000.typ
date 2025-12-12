@@ -43,34 +43,8 @@
   // If you only want one language, leave the comma at the end -> `("de", "Deutsch", []),` its necessary for syntax of the template
   abstract: (
     ("de", "Deutsch", include "abstracts/abstract_german.typ"),
-    (
-      "en",
-      "English",
-      [This is a short abstract to show the formatting and general style of the template
-        It is possible to have multiple abstracts in different languages
-      ],
-    ),
+    ("en", "English", include "abstracts/abstract_english.typ"),
   ),
-
-  // appendices: usage: ("Title", [content] || include("appendix.typ"))
-  // change to `appendices: none` to remove appendix
-  // appendices: (
-  //   // ("Appendix Titel 1", include("appendix.typ")), // appendix from file
-  //   (
-  //     "Titel 1",
-  //     [
-  //       == This is some more source code
-  //       #lorem(10)
-  //     ],
-  //   ), // appendix inline
-  //   (
-  //     "Titel 2",
-  //     [
-  //       == Even more!
-  //       #lorem(50)
-  //     ],
-  //   ),
-  // ),
 
   // Path/s to references - either .yaml or .bib files
   // * for `.yaml` files see: [hayagriva](https://github.com/typst/hayagriva)
@@ -95,6 +69,7 @@
 // You can now start writing :)
 #let acro-long(key) = acronyms.find(a => a.key == key).long
 #let acro-short(key) = acronyms.find(a => a.key == key).short
+#let CDS = link(<grd:cds>)[CDS]
 #let CDS-View = link(<grd:cds_views>)[CDS-View]
 #let Metadatentabelle = link(<grd:metadatentabelle>)[Metadatentabelle]
 #let Queries = link(<grd:queries>)[Queries]
@@ -278,26 +253,33 @@ Die Ergebnisse der Queries kann man sich in zwei möglichen Formen anzeigen lass
 
 == Auswertungen
 
-Für die Auswertung der Daten habe ich mir verschiedene Versionen der Daten erstellt und gespeichert. Aufgrund von Problemen mit der Verarbeitung der Queries, musste ich die Anzahl der Datensätze limitieren, weshalb ich nur Daten von ca. 10000 Objekten speichern konnte. Dies hat natürlich Auswirkungen auf die Qualität der Auswertung, da sich die Datenmenge bei jedem Datenabruf verändert und unterschiedliche Ausschnitte aus dem gesamten Datensatz gespeichert werden. Außerdem gab es einige Probleme mit dem internen System XT7, weshalb ich all meine erstellten Objekte (Tabellen, Views, Queries) in ein anderes System übertragen musste. Dadurch sind alle bis zu dem Zeitpunkt der Übertragung erstellten Daten verloren gegangen und die nun von mir erstellten Versionen wurden nicht im - wie ursprünglicherweise geplant - wöchentlichen Abstand erstellt, sondern in einem Abstand von wenigen Stunden. Dies hat natürlich auch Auswirkungen auf die Qualität der Auswertung, da sich in so einem kurzen Zeitraum kaum Veränderungen in den Daten ergeben. 
+Für die Auswertung der Daten habe ich mir verschiedene Versionen der Daten erstellt und gespeichert. Aufgrund von Problemen mit der Verarbeitung der Queries, musste ich die Anzahl der Datensätze limitieren, weshalb ich nur Daten von ca. 10000 Objekten speichern konnte. Dies hat natürlich Auswirkungen auf die Qualität der Auswertung, da sich die Datenmenge bei jedem Datenabruf verändert und unterschiedliche Ausschnitte aus dem gesamten Datensatz gespeichert werden. Außerdem gab es einige Probleme mit dem internen System XT7, weshalb ich all meine erstellten Objekte (Tabellen, Views, Queries) in das System ODE übertragen musste. Dadurch sind alle bis zu dem Zeitpunkt der Übertragung erstellten Daten verloren gegangen und die nun von mir erstellten Versionen wurden nicht im - wie ursprünglicherweise geplant - wöchentlichen Abstand erstellt, sondern in einem Abstand von wenigen Stunden. Dies hat natürlich auch Auswirkungen auf die Qualität der Auswertung, da sich in so einem kurzen Zeitraum kaum Veränderungen in den Daten ergeben.
 
-#linebreak()
+Dennoch lassen sich aus den erstellten Versionen einige Trends erkennen:
 
-Dennoch lassen sich aus den erstellten Versionen einige Trends erkennen. Es lässt sich zum Beispiel erkennen, dass die Anzahl der Assoziationen mit jeder neuen Version leicht ansteigt. Dies lässt sich dadurch erklären, dass mit der Zeit immer mehr Objekte erstellt werden, die wiederum Assoziationen benötigen um in Cube-Views - also #OLAP-Würfel#"n" - eingebunden zu werden.
+=== Query für Assoziationen
+Es lässt sich zum Beispiel erkennen, dass die Anzahl der Assoziationen mit jeder neuen Version leicht ansteigt. Dies lässt sich dadurch erklären, dass mit der Zeit immer mehr Objekte erstellt werden, die wiederum Assoziationen benötigen um in Cube-Views - also #OLAP-Würfel#"n" - eingebunden zu werden.
 
-Zwischen den Versionen 1 und 2 lagen ca. 2 Stunden Zeit, weshalb in dieser zeit nur sehr wenige Objekte und Assoziationen hinzugekommen sind. Die Veränderungen hängen auch sehr stark von den Arbeitszeiten der Entwickler ab, weshalb es in manchen Versionen kaum Veränderungen gibt, während es in anderen Versionen wieder mehr sind. So gab es beispielsweise zwischen Version 1 und 2 in fast allen Source Typen einen kleinen Anstieg an genutzten Assoziationen, während zwischen den Versionen 2 und 3 in manchen Source Typen sogar ein leichter Rückgang zu verzeichnen war. Siehe folgende Grafik:
+Zwischen den Versionen 1 und 2 lagen ca. 2 Stunden Zeit, weshalb in dieser zeit nur sehr wenige Objekte und entsprechend Assoziationen hinzugekommen sind. Die Veränderungen hängen auch sehr stark von den Arbeitszeiten der Entwickler ab, weshalb es in manchen Versionen kaum Veränderungen gibt, während es in anderen Versionen wieder mehr sind. So gab es beispielsweise zwischen Version 1 und 2 in fast allen Source Typen einen kleinen Anstieg an genutzten Assoziationen, während zwischen den Versionen 2 und 3 in manchen Source Typen sogar ein leichter Rückgang zu verzeichnen war.
+
+Interessant ist jedoch zu sehen, dass es in Version 4 nur extrem geringe Veränderungen in den Daten gab, im Vergleich zu Version 3. Am "Time-Stamp" der Speicherung lässt sich erkennen, dass die Version 4 erst am nächsten Tag erstellt wurde. Demnach ist es verwunderlihc, dass es in der Zeit keine Veränderungen gab. Es lässt sich jedoch dadurch erklären, dass das System "ODE", in welchem die Daten gespeichert und abgerufen werden, lediglich ein Test-System ist, in dem in der Nacht nur wenige Entwickler an den Objekten arbeiten und somit auch kaum neue Objekte oder Assoziationen erstellt wurden.
+
+Siehe folgende Grafik:
 
 #figure(
-  image("/assets/Assoziation Query 11.12.png", width: 60%),
+  image("/assets/Assoziation Query.png", width: 70%),
   caption: [Ergebnisse der Assoziations-Query],
 )
 
-Die Veränderungen an der Anzahl der Assoziations hängt auch stark von der Software-Komponente ab. In manchen Komponenten gibt es einen deutlichen Anstieg an genutzten Assoziationen, während in anderen Komponenten kaum Veränderungen zu verzeichnen sind. Dies lässt dadurch erklären, dass manche Komponenten stärker bearbeitet und weiter entwickelt werden als andere.
+Die Veränderungen an der Anzahl der Assoziations hängt außerdem sehr stark von der Software-Komponente ab. In manchen Komponenten gibt es einen deutlichen Anstieg an genutzten Assoziationen, während in anderen Komponenten kaum Veränderungen zu verzeichnen sind.
+
+=== Query für Funktionen und durchschnittliche Anzahl an Funktionen
 
 Auch bei der Anzahl der Funktionnen gibt es einige Veränderungen. Die unterscheiden sich jedoch stark von den Veränderungen bei den Assoziationen. Während es bei den Assoziationen meist eher kleinere Veränderungen in den Daten gab, gibt es bei den Funktionen teils deutliche Sprünge. So steigt die Anzahl der Funktionen aus dem Source Type "W" zum Beispiel von 1.612 Elementen in der ersten Version auf 2.172 Elementen in der zweiten Version und 4.140 Elementen in der dritten Version an.
 
 Spannend zu sehen ist jedoch das sich die für diesen Source Type die durchschnittliche Anzahl an Funktionen pro Enität nur marginal von 3,558 auf 4,052 und 4,059 ändert. Dies lässt darauf schließen, dass in der Zeit zwischen den Versionen vor allem neue Enitäten erstellt wurden, die jedoch im Durchschnitt eine ähnliche Anzahl an Funktionen besitzen wie die bereits existierenden Enitäten.
 
-Bei dem Source Type "P" ist die Veränderung der Anzahl an Funktionen sowol in der absoluten Anzahl als auch im Durchschnitt pro Enität deutlicher.
+Bei dem Source Type "P" ist die Veränderung der Anzahl an Funktionen sowol in der absoluten Anzahl als auch im Durchschnitt pro Enität extremer.
 
 Siehe Abbildung:
 #figure(
@@ -305,145 +287,34 @@ Siehe Abbildung:
   caption: [Ergebnisse des Average-Function-Query],
 )
 
-In der Analyse der Anzahl der Funktionen und der skalaren Funktionen lassen sich in den ersten drei Versionen nur sehr wenige Veränderungen erkennen. Dies liegt daran, dass in dem kurzen Zeitraum nur wenig neue Funktionen erstellt wurden. Lediglich im Source Type "W" unter der Software-Komponente "SAP_Basis" gibt es einen deutlichen Anstieg an Funktionen zwischen der zweiten und der dritten Version. Dies lässt sich vor allem auf die Art des Datenabrufes zurückführen, da ich die Anzahl der Datensätze aus Speicher- und Verarbeitungsgründen auf 10.000 Objekte limitieren musste. Hätte ich die Daten über einen längeren Zeitraum und mit einer größeren Datenmenge abrufen können, wären die Ergebnisse vermutlich aussagekräftiger gewesen.
+Hier kann man sogar erkennen, dass es keine Veränderungen in den Anzahlen der Funktionen zwischen der dritten und vierten Version gab.
+
+=== Query für skalare Funktionen
+
+In der Analyse der Anzahl der Funktionen und der skalaren Funktionen lassen sich in den ersten drei Versionen nur sehr wenige Veränderungen erkennen. Dies liegt daran, dass in dem kurzen Zeitraum nur wenig neue skalare Funktionen erstellt wurden. Lediglich im Source Type "W" unter der Software-Komponente "SAP_Basis" gibt es einen deutlichen Anstieg an Funktionen zwischen der zweiten und der dritten Version. Dies lässt sich vor allem auf die Art des Datenabrufes zurückführen, da ich die Anzahl der Datensätze aus Speicher- und Verarbeitungsgründen auf 10.000 Objekte limitieren musste. Das kann dazu führen, dass bei den unterschiedlichen Versionen, verschiedene Teilmengen aus den ursprünglichen Daten abgezogen werden. Hätte ich die Daten über einen längeren Zeitraum und mit einer größeren Datenmenge abrufen können, wären die Ergebnisse vermutlich aussagekräftiger gewesen.
+
+#figure(
+  image("/assets/Scalar Function Query Results.png", width: 100%),
+  caption: [Ergebnisse des Scalar-Function-Query],
+)
+
+Auch hier ist zu erkennen, dass es in der vierten Version keine Veränderungen, im Vergleich zur dritten Version, gab.
+
+=== Query für die Anzahl der Elemente
+
+Im Gegensatz zu den vorherigen Queries, gibt es bei der Anzahl der Elemente in den verschiedenen Source Typen und Software-Komponenten keine Veränderungen. Das heißt es sind keine neuen Elemente hinzugekommen oder entfernt worden. Dies lässt sich vorallem durch die kurzen Abrufintervalle erklären, da es in so einem kurzen Zeitraum sehr unwahrscheinlich ist, dass derart wichtige Veränderungen im System vorgenommen werden.
+
+#figure(
+  image("/assets/Elements Query.png", width: 90%),
+  caption: [Ergebnisse des Element-Count-Query],
+)
 
 = Fazit
 
+Das Projekt, welches ich in dieser Arbeit beschrieben habe, dient dazu die historische Entwicklung der Feature-Nutzung innerhalb von der internen ABAP #CDS-View#"s" zu speichern und zu analysieren. Durch die automatischen Speicherung der Daten in regelmäßigen Abständen in meine eigenen Tabellen und der Zuweisung einer Versionsnummer, ist es nun möglich die Daten historisch zu analysieren und abzurufen. In Kombination dazu habe ich einen #OLAP-Würfel erstellt, der die verschiedenen Tabellen miteinander verknüpft und es mir ermöglicht analytische #Queries zu erstellen, die diese Daten nach bestimmten Kriterien auswerten und visualisieren. Dieses Framework ermöglicht es dem Team nun Einblicke in die genaue Entwicklung und Nutztung der verschienen #CDS -Objekte zu bekommen und datenbasiert die Entscheidungen zu treffen, welche Funktionen, Objekte und Elemente weiterentwickelt werden sollten.
 
-#let typst-preview(output, typst-code) = table(
-  columns: 2,
-  fill: (_, row) => if row == 0 { blue } else { white },
-  align: (_, row) => if row == 0 { center } else { horizon + left },
-  text(fill: white, weight: "bold", "Typst Code"), text(fill: white, weight: "bold", "Output"),
+Die Integration des Datenabrufes erfolgte mit Absprache mit meinem Betreuer Kolja Groß, der mir bei der Implementierung und den technischen Herausforderungen zur Seite stand. Durch regelmäßige Meetings und Updates konnte ich sicherstellen, dass die Anforderungen des Teams erfüllt wurden und das Projekt in die richtige Richtung ging.
 
-  align(horizon, box(width: 100%, typst-code)),
-  box(width: 100%)[
-    #set heading(numbering: "i.", outlined: false, offset: 1)
-    #output
-  ],
-)
+Es gab einige Herausforderungen und Probleme, die während der Implementierung des Datenabrufes auftraten, wie zum Beispiel lange Verarbeitungszeiten beim Zugriff auf die Daten, wordurch es nötig geworden ist die Datenmenge zu limitieren. Auch die Übertragung der erstellten Objekte in das System ODE führte zu Datenverlusten, da es nicht möglich war die bisher gespeicherten Daten zu übertragen. Dies und anfängliche Ungenauigkeiten im Code führten zu vermehrten Datenverlusten, die die schlussendliche Qualität der erhobenen Daten und folglich auch der Auswertung beeinflusst haben.
 
-= Advanced Elements
-
-== Figures
-Inserting figures and code blocks into your Typst document enhances its informational depth. When specifying a `caption` for a figure, the template will automatically generate a list of figures, making it easy to navigate your document.
-
-/ Note: When using "ieee" Sorting for bibliography, the sources for figures will be evaluated before the text. To prevent "false sorting", you can use `#caption_with_source("Text", [@source])` instead. This will display the caption in outlines without source and will the source evaluate at the time the figure is displayed
-
-=== Image Figures
-#typst-preview(figure(image("assets/SAP-Logo.svg"), caption: "SAP Logo"))[```typ
-#figure(
-  image("assets/SAP-Logo.svg"),
-  caption: "SAP Logo"
-)
-```]
-
-=== Code Snippets:
-
-
-
-This template uses #link("https://typst.app/universe/package/codly")[Codly] for code snippets. Look at their documentation on how to further customize and control your code blocks.
-
-Besides that the template provides two functions to create code snippet figures that get listed in a source code listing: `codefigure` and `codefigurefile`.
-
-// Pagebreak for better formatting
-#pagebreak()
-
-Use `codefigure` to display a code figure from the provided code.
-
-#typst-preview(
-  codefigure(caption: "My Code")[```rust
-  fn main() {
-    println!("Hello World!");
-  }
-  ```],
-  raw(read("assets/example-code.typ"), block: true, lang: "typ"),
-)
-
-/ Note: You can also provide custom syntax (`.sublime-syntax`) files for code highlighting. The template already includes a syntax file for CDS, so you can use the `cds` language in your code blocks.
-
-Use `codefigurefile` to create a code snippet figure from the content of a file. Note that the provided file is searched relative to `./`.
-
-#typst-preview(
-  codefigurefile("assets/example-code.typ", caption: "My Code from a file"),
-  ```typst
-   #codefigurefile(
-     "assets/example-code.typ",
-     caption: "My Code from a file"
-   )
-  ```,
-)
-
-== Math
-The math syntax is a loose interpretation of LaTeX, allowing you to create complex mathematical equations with ease.
-See #link("https://typst.app/docs/reference/math/", "the Typst documentation") for a detailed overview of the math syntax.
-
-#typst-preview[
-  $
-    sum_(k=0)^n k & = 1 + ... + n \
-                  & = (n(n+1)) / 2 \
-  $
-][```typ
-$ sum_(k=0)^n k
-    &= 1 + ... + n \
-    &= (n(n+1)) / 2 $
-```]
-
-== Block Quotes
-
-#typst-preview[
-  #quote(attribution: [Frankling D. Roosevelt ])[
-    The only thing we have to fear is fear itself.
-  ]
-][```typ
-#quote(attribution: [Frankling D. Roosevelt])[
-  The only thing we have to fear is fear itself.
-]
-```]
-
-== Notes
-
-#import "@preview/drafting:0.2.2": *
-
-This template uses #link("https://typst.app/universe/package/drafting/")[Drafting] for notes.
-//Using `margin-note` you can add notes to #margin-note("Anywhere in your document!") the margin of your document.
-
-//#inline-note[You can also add inline notes to your document with `inline-note`]
-
-Check out their documentation for more advanced use cases.
-
-You might have noticed the notes listing on the first page of this document.
-This listing reminds you of the notes still present in your document. Once you remove all notes, the listing will disappear.
-
-= References and Citations
-
-== Local Elements
-You can reference local elements like figures, code blocks, and sections using the `ref()` function. You can also use the synax sugar `<ref>` to define and `@<ref>` to reference references.
-
-#typst-preview[
-  = Important Section <section-1>
-  Some important text
-
-  = Other Section
-  More important text, just like @section-1
-][```typ
-= Section 1 <section-1>
-Some important text
-
-= Section 2
-More important text, just like @section-1
-```]
-
-== Code Blocks
-If you use the provided `codefigure` function, you can specify a reference name via the `reference` parameter. This allows you to reference the code block later in the document.
-
-#typst-preview(
-  [#codefigure(caption: "Code w/ Ref", reference: "my-rust-code")[```rust
-    fn main() {
-      panic!("Hilfe!");
-    }
-    ```]
-
-    Look at my code in @my-rust-code!],
-  raw(read("assets/example-code-2.typ"), block: true, lang: "typ"),
-)
+Trotz dieser Herausforderungen konnte ich ein funktionierendes System erstellen, welches die Anforderungen des Projektes erfüllt. Für zukünftige Ausarbeitungen des System  kann es sinnvoll sein, den Prozess der Datenspeicherung zu optimieren, um die Limitierung der Datenmenge entfernen zu können. Außerdem können weitere Tabellen und Objekttypen in das System integriert werden, um nicht nur den Teams rund um die ABAP #CDS#"s" Einblicke in die Objektnutzung zu geben, sondern auch anderen Teams und Abteilungen innerhalb des Unternehmens.
